@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "OneExpert Interview": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
