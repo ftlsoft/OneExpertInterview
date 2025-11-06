@@ -28,7 +28,7 @@ namespace OneExpertInterview.Application.Services
             {
                 var product = _repository.GetOrder(orderId);
 
-                await Task.Delay(300);
+                await Task.Delay(1000);
 
                 _logger.LogInfo($"ProcessOrderAsync Processed order {orderId}: {product}");
             }
