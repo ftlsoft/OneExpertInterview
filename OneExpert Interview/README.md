@@ -6,12 +6,15 @@ oneExpert Developer NET interview project
 Windows:
 
 Debug:  
+
 **& "OneExpert Interview\OneExpertInterview\bin\Debug\net8.0\OneExpertInterview.exe"**
-
+  
 Release:  
-**& "OneExpert Interview\OneExpertInterview\bin\Release\net8.0\OneExpertInterview.exe"**
 
+**& "OneExpert Interview\OneExpertInterview\bin\Release\net8.0\OneExpertInterview.exe"**
+  
 Dll directly:  
+
 **dotnet "OneExpert Interview\OneExpertInterview\bin\Debug\net8.0\OneExpertInterview.dll"**
 
 docker:
