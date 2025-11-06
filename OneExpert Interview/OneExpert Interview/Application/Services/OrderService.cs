@@ -26,15 +26,16 @@ namespace OneExpertInterview.Application.Services
 
             try
             {
+                _logger.LogInfo($"ProcessOrderAsync get orderId: {orderId}");
                 var product = _repository.GetOrder(orderId);
 
-                await Task.Delay(1000);
+                await Task.Delay(100);
 
-                _logger.LogInfo($"ProcessOrderAsync Processed order {orderId}: {product}");
+                _logger.LogInfo($"ProcessOrderAsync processed orderId: {orderId}: {product}");
             }
             catch (Exception ex)
             {
-                _logger.LogError($"ProcessOrderAsync Failed processing order {orderId}", ex);
+                _logger.LogError($"ProcessOrderAsync Failed processing orderId: {orderId}", ex);
             }
         }
     }

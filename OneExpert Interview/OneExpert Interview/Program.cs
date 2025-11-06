@@ -12,8 +12,6 @@ namespace OneExpertInterview
     {
         static async Task Main(string[] args)
         {
-
-            //var orderService = ServiceContainer.GetOrderService();
             using var simpleContainer = new SimpleContainer();
             simpleContainer.RegisterSingleton<IOrderRepository, OrderRepository>();
             simpleContainer.RegisterSingleton<ILogger, ConsoleLogger>();
