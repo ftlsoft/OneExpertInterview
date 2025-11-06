@@ -42,7 +42,6 @@ namespace OneExpertInterview.Tests.Services
             var order = new { Id = orderId, ProductName = "Laptop" };
 
             _validatorMock.Setup(v => v.IsValid(orderId)).Returns(true);
-            //_repositoryMock.Setup(r => r.GetOrder(orderId)).Returns(order);
             _repositoryMock.Setup(r => r.GetOrder(orderId)).Returns($"Laptop");
 
 
