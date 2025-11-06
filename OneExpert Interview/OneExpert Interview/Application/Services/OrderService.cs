@@ -10,17 +10,19 @@ using System.Threading.Tasks;
 
 namespace OneExpertInterview.Application.Services
 {
-    internal class OrderService : IOrderService
+    public class OrderService : IOrderService
     {
         private readonly ILogger _logger;
         private readonly IOrderRepository _repository;
         private readonly IOrderValidator _orderValidator;
+        private readonly INotificationService _notificationService;
 
-        public OrderService(ILogger logger, IOrderRepository repository, IOrderValidator orderValidator)
+        public OrderService(ILogger logger, IOrderRepository repository, IOrderValidator orderValidator, INotificationService notificationService)
         {
             _logger = logger;
             _repository = repository;
             _orderValidator = orderValidator;
+            _notificationService = notificationService;
         }
 
         public async Task ProcessOrderAsync(int orderId)
@@ -41,6 +43,7 @@ namespace OneExpertInterview.Application.Services
                 await Task.Delay(100);
 
                 _logger.LogInfo($"ProcessOrderAsync processed orderId: {orderId}: {product}");
+                _notificationService.Send($"OrderProcessed: Order {orderId} has been processed.");
             }
             catch (Exception ex)
             {

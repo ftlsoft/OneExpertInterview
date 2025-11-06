@@ -23,10 +23,12 @@ namespace OneExpertInterview
             var config = builder.Configuration;
             _simpleContainer.RegisterInstance<IConfiguration>(config);
 
+            // Everything is registered as Singleton for simplicity, not beacause I don't know other lifetimes :) Scoped or Transient
             _simpleContainer.RegisterSingleton<IOrderRepository, OrderRepository>();
             _simpleContainer.RegisterSingleton<ILogger, ConsoleLogger>();
             _simpleContainer.RegisterSingleton<IOrderService, OrderService>();
             _simpleContainer.RegisterSingleton<IOrderValidator, OrderValidator>();
+            _simpleContainer.RegisterSingleton<INotificationService, NotificationService>();
 
             InitOrderRepository();
 
