@@ -1,5 +1,6 @@
 ﻿using OneExpertInterview.Application.Interfaces;
 using OneExpertInterview.Application.Services;
+using OneExpertInterview.Application.Validators;
 using OneExpertInterview.Domain.Entities;
 using OneExpertInterview.Domain.Interfaces;
 using OneExpertInterview.Infrastructure.Logging;
@@ -21,6 +22,7 @@ namespace OneExpertInterview
             _simpleContainer.RegisterSingleton<IOrderRepository, OrderRepository>();
             _simpleContainer.RegisterSingleton<ILogger, ConsoleLogger>();
             _simpleContainer.RegisterSingleton<IOrderService, OrderService>();
+            _simpleContainer.RegisterSingleton<IOrderValidator, OrderValidator>();
 
             InitOrderRepository();
 
