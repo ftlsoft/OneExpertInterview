@@ -1,23 +1,30 @@
 ﻿using OneExpertInterview.Application.Interfaces;
 using OneExpertInterview.Application.Services;
+using OneExpertInterview.Domain.Entities;
 using OneExpertInterview.Domain.Interfaces;
 using OneExpertInterview.Infrastructure.Logging;
 using OneExpertInterview.Infrastructure.Repositories;
 using System.ComponentModel.Design;
 using System.Threading.Tasks;
+using System.Threading.Tasks.Sources;
 
 namespace OneExpertInterview
 {
     internal class Program
     {
+        static SimpleContainer _simpleContainer = new SimpleContainer();
+
         static async Task Main(string[] args)
         {
-            using var simpleContainer = new SimpleContainer();
-            simpleContainer.RegisterSingleton<IOrderRepository, OrderRepository>();
-            simpleContainer.RegisterSingleton<ILogger, ConsoleLogger>();
-            simpleContainer.RegisterSingleton<IOrderService, OrderService>();
+            //using var simpleContainer = new SimpleContainer(); 
 
-            var orderService = simpleContainer.GetService<IOrderService>();
+            _simpleContainer.RegisterSingleton<IOrderRepository, OrderRepository>();
+            _simpleContainer.RegisterSingleton<ILogger, ConsoleLogger>();
+            _simpleContainer.RegisterSingleton<IOrderService, OrderService>();
+
+            InitOrderRepository();
+
+            var orderService = _simpleContainer.GetService<IOrderService>();
 
             Console.WriteLine("Order Processing System");
 
@@ -31,6 +38,13 @@ namespace OneExpertInterview
             await Task.WhenAll(tasks);
 
             Console.WriteLine("All orders processed.");
+        }
+
+        private static void InitOrderRepository()
+        {
+            var orderRepository = _simpleContainer.GetService<IOrderRepository>();
+            orderRepository.AddOrder(new Order() { Id = 1, Description = "Laptop" });
+            orderRepository.AddOrder(new Order() { Id = 2, Description = "Phone" });
         }
     }
 }
