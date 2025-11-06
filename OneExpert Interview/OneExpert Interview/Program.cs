@@ -8,6 +8,8 @@ using OneExpertInterview.Infrastructure.Repositories;
 using System.ComponentModel.Design;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Sources;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 
 namespace OneExpertInterview
 {
@@ -17,7 +19,9 @@ namespace OneExpertInterview
 
         static async Task Main(string[] args)
         {
-            //using var simpleContainer = new SimpleContainer(); 
+            var builder = Host.CreateApplicationBuilder(args);
+            var config = builder.Configuration;
+            _simpleContainer.RegisterInstance<IConfiguration>(config);
 
             _simpleContainer.RegisterSingleton<IOrderRepository, OrderRepository>();
             _simpleContainer.RegisterSingleton<ILogger, ConsoleLogger>();

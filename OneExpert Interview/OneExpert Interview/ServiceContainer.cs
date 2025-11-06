@@ -13,11 +13,14 @@ namespace OneExpertInterview
     /// <summary>
     /// taken from https://medium.com/@bhargavkoya56/crafting-your-own-dependency-injection-container-in-c-a-developers-journey-bd255633dd5f
     /// only singleton lifetime is implemented for simplicity
+    /// I've added ResgisterInstance method for ex: IConfiguration
     /// </summary>
-  
+
     public interface IServiceContainer
     {
         void RegisterSingleton<TInterface, TImplementation>() where TImplementation : class, TInterface;
+        //void RegisterInstance<TInterface, TImplementation>(TImplementation instance) where TImplementation : class, TInterface;
+        void RegisterInstance<TInterface>(TInterface instance);
 
         T GetService<T>();
         object GetService(Type serviceType);
@@ -70,6 +73,17 @@ namespace OneExpertInterview
             return instance;
         }
 
+        public void RegisterInstance<TInterface>(TInterface instance)
+        {
+            _services[typeof(TInterface)] = new ServiceDescriptor
+            {
+                ServiceType = typeof(TInterface),
+                Lifetime = ServiceLifetime.Singleton,
+                Instance = instance
+            };
+            _singletonInstances[typeof(TInterface)] = instance;
+        }
+
         public void RegisterSingleton<TInterface, TImplementation>() where TImplementation : class, TInterface
         {
             _services[typeof(TInterface)] = new ServiceDescriptor
@@ -114,5 +128,7 @@ namespace OneExpertInterview
 
             return Activator.CreateInstance(implementationType, args);
         }
+
+
     }
 }
