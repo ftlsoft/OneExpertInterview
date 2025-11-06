@@ -3,21 +3,26 @@ oneExpert Developer NET interview project
 
 
 ### How to run
-Windows:
+**Windows:**
 
-Debug:  
+**Debug:**
 
-**& "OneExpert Interview\OneExpertInterview\bin\Debug\net8.0\OneExpertInterview.exe"**
+```powershell
+& "OneExpert Interview\OneExpertInterview\bin\Debug\net8.0\OneExpertInterview.exe"
+```
   
-Release:  
+**Release:**
 
-**& "OneExpert Interview\OneExpertInterview\bin\Release\net8.0\OneExpertInterview.exe"**
-  
-Dll directly:  
+```powershell
+& "OneExpert Interview\OneExpertInterview\bin\Release\net8.0\OneExpertInterview.exe"
+```
 
-**dotnet "OneExpert Interview\OneExpertInterview\bin\Debug\net8.0\OneExpertInterview.dll"**
+**Dll directly:**
+```powershell
+dotnet "OneExpert Interview\OneExpertInterview\bin\Debug\net8.0\OneExpertInterview.dll"**
+```
 
-docker:
+**docker:**  
 docker build -t oneexpert_orderapp -f OneExpertInterview/Dockerfile .
 docker run --rm -it oneexpert_orderapp
 
