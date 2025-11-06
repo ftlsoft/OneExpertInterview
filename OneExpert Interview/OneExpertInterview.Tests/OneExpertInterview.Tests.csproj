@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OneExpert Interview\OneExpertInterview.csproj" />
+    <ProjectReference Include="..\OneExpertInterview\OneExpertInterview.csproj" />
   </ItemGroup>
 
   <ItemGroup>
