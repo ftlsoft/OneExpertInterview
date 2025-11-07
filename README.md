@@ -3,18 +3,28 @@ oneExpert Developer NET interview project
 
 
 ### How to run
-Windows:
-Debug:
-	& "OneExpert Interview\OneExpertInterview\bin\Debug\net8.0\OneExpertInterview.exe"
-Release:
-	& "OneExpert Interview\OneExpertInterview\bin\Release\net8.0\OneExpertInterview.exe"
+**Windows:**
 
-Dll directly:
-	dotnet "OneExpert Interview\OneExpertInterview\bin\Debug\net8.0\OneExpertInterview.dll"
+**Debug:**
 
-docker:
-	docker build -t oneexpert_orderapp -f OneExpertInterview/Dockerfile .
-	docker run --rm -it oneexpert_orderapp
+```powershell
+& "OneExpert Interview\OneExpertInterview\bin\Debug\net8.0\OneExpertInterview.exe"
+```
+  
+**Release:**
+
+```powershell
+& "OneExpert Interview\OneExpertInterview\bin\Release\net8.0\OneExpertInterview.exe"
+```
+
+**Dll directly:**
+```powershell
+dotnet "OneExpert Interview\OneExpertInterview\bin\Debug\net8.0\OneExpertInterview.dll"**
+```
+
+**docker:**  
+docker build -t oneexpert_orderapp -f OneExpertInterview/Dockerfile .
+docker run --rm -it oneexpert_orderapp
 
 
 ### Architecture diagram (text or mermaid)
